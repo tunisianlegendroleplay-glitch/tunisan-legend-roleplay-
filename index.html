@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tunisian Legend — Whitelist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#c92a24;
+    --dark:#0e0e10;
+    --muted:#f3f3f3;
+    --glass: rgba(255,255,255,0.06);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: "Rubik", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background:
+      radial-gradient(ellipse at 10% 20%, rgba(201,42,36,0.11), transparent 10%),
+      radial-gradient(ellipse at 90% 80%, rgba(0,0,0,0.25), transparent 10%),
+      linear-gradient(180deg,#12080a 0%, #3b0f0f 40%, #4f1010 100%);
+    color:var(--muted);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-y:scroll;
+  }
+
+  /* top header / hero */
+  .hero{
+    background: linear-gradient(90deg, rgba(0,0,0,0.25), rgba(0,0,0,0.45)), radial-gradient(circle at 10% 10%, rgba(255,255,255,0.02), transparent 10%);
+    padding:36px 20px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    border-bottom: 6px solid rgba(0,0,0,0.35);
+    position:sticky;
+    top:0;
+    z-index:40;
+    backdrop-filter: blur(6px);
+    animation: slideDown .7s ease-out both;
+  }
+
+  .logo {
+    display:flex;
+    align-items:center;
+    gap:18px;
+    transform-origin:center left;
+  }
+  .logo img{
+    width:140px;
+    height:auto;
+    object-fit:contain;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.7));
+    border-radius:8px;
+    background:linear-gradient(180deg,#111 0%, rgba(255,255,255,0.02) 100%);
+  }
+  .brand-title{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+  }
+  .brand-title .big{
+    font-family: "Montserrat", "Rubik", sans-serif;
+    font-weight:800;
+    letter-spacing:1px;
+    font-size:26px;
+    color: #fff;
+    text-shadow: 0 6px 20px rgba(201,42,36,0.22);
+  }
+  .brand-title .sub{
+    font-size:12px;
+    color: #ffd7d4;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    padding-left:4px;
+  }
+
+  /* nav */
+  nav{
+    margin-left:auto;
+    display:flex;
+    gap:14px;
+    align-items:center;
+  }
+  .btn{
+    padding:10px 18px;
+    border-radius:28px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.12));
+    border: 2px solid rgba(255,255,255,0.05);
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+    transition: transform .18s ease, box-shadow .18s ease;
+    text-decoration:none;
+  }
+  .btn.primary{
+    background: linear-gradient(180deg, var(--red), #b71813);
+    box-shadow: 0 8px 30px rgba(201,42,36,0.25);
+    border: none;
+  }
+  .btn:hover{ transform: translateY(-3px); }
+
+  /* main content */
+  .page{
+    max-width:1100px;
+    margin: 36px auto;
+    padding: 0 20px 80px;
+    display:grid;
+    grid-template-columns: 1fr 420px;
+    gap:32px;
+    align-items:start;
+  }
+
+  /* left column: title + large card with form embed */
+  .left h1{
+    font-family:"Montserrat";
+    font-size:36px;
+    margin:0 0 18px 0;
+    color:#fff;
+    text-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    animation: fadeInUp .7s .15s both;
+  }
+
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.18));
+    border-radius:12px;
+    padding:18px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.03);
+    overflow: hidden;
+    animation: floatIn .7s .25s both;
+  }
+
+  /* header bar style like screenshot */
+  .card .card-head{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 14px;
+    border-radius:10px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(0,0,0,0.12));
+    border-bottom: 4px solid rgba(201,42,36,0.9);
+  }
+  .card .card-head h2{
+    margin:0;
+    font-family:"Montserrat";
+    font-size:26px;
+    color:#fff;
+    letter-spacing:1px;
+  }
+
+  /* iframe form area */
+  .form-wrap{
+    margin-top:16px;
+    border-radius:10px;
+    overflow:hidden;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+  iframe#gform{
+    width:100%;
+    height:680px;
+    border:0;
+    display:block;
+  }
+
+  /* right column: info panel */
+  .panel{
+    position:relative;
+    top:0;
+    border-radius:12px;
+    padding:18px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.25));
+    border: 1px solid rgba(255,255,255,0.03);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    animation: slideInRight .7s .45s both;
+  }
+  .panel h3{ margin:0 0 12px 0; font-family:"Montserrat"; font-size:20px; color:#fff;}
+  .note{font-size:13px; color:#e8d3d3; line-height:1.45}
+
+  /* decorative vertical scrollbar style (just cosmetic) */
+  ::-webkit-scrollbar { width: 12px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg,#ffcfcf,#b82a24);
+    border-radius: 12px;
+    border: 3px solid rgba(0,0,0,0.25);
+  }
+
+  /* responsive */
+  @media (max-width:980px){
+    .page{ grid-template-columns: 1fr; padding-bottom:120px; }
+    iframe#gform{ height:750px; }
+    .logo img{ width:120px; }
+    .brand-title .big{ font-size:20px; }
+  }
+
+  /* animations */
+  @keyframes slideDown { from{ transform: translateY(-18px); opacity:0 } to{ transform:none; opacity:1 } }
+  @keyframes fadeInUp { from{ transform: translateY(16px); opacity:0 } to{ transform:none; opacity:1 } }
+  @keyframes floatIn { from{ transform: translateY(18px) scale(.995); opacity:0 } to{ transform:none; opacity:1 } }
+  @keyframes slideInRight { from{ transform: translateX(24px); opacity:0 } to{ transform:none; opacity:1 } }
+</style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="hero" role="banner">
+    <div class="logo" aria-hidden="true">
+      <!-- Replace the src with the path to your logo file. Name used below: tunisian-legend-logo.png -->
+      <img src="tunisian-legend-logo.png" alt="Tunisian Legend logo">
+      <div class="brand-title">
+        <div class="big">TUNISIAN LEGEND</div>
+        <div class="sub">ROLE PLAY — OFFICIAL</div>
+      </div>
+    </div>
+
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="#" class="btn">Home</a>
+      <a href="#" class="btn">Rules</a>
+      <a href="#whitelist" class="btn primary">Whitelist</a>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="page" role="main">
+    <section class="left">
+      <h1 id="whitelist">Formulaire Whitelist</h1>
+
+      <div class="card" aria-labelledby="whitelist">
+        <div class="card-head">
+          <h2>Whitelist Form</h2>
+        </div>
+
+        <div class="form-wrap" style="background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.15));">
+          <!-- ====== IMPORTANT: Replace iframe src below with your Google Form embed src ======
+               To get the src: open Google Form -> Send -> <> (embed) -> copy the src URL
+               Put that URL after src=">
+          -->
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfPuEwa6maMuEu7LVUxmdkuvFO4qV-Uqx7Vo9yNlffxTpNgKg/viewform?embedded=true" width="640" height="2018" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
+      </div>
+    </section>
+
+    <aside class="panel" aria-labelledby="panel-title">
+      <h3 id="panel-title">About Whitelist</h3>
+      <p class="note">
+        Welcome to the Tunisian Legend RP whitelist. Read the rules carefully and fill the form truthfully.
+        The team will review your application. False answers or cheating may cause rejection.
+      </p>
+
+      <hr style="margin:16px 0; border:none; height:1px; background:rgba(255,255,255,0.04)">
+
+      <h3 style="margin-top:10px">Tips</h3>
+      <p class="note">
+        • Use your real in-game name and Discord handle.<br>
+        • Provide roleplay experience and a short backstory.<br>
+        • Attach proof/screenshots when required.
+      </p>
+
+      <div style="margin-top:18px; display:flex; gap:10px">
+        <a class="btn" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to top</a>
+        <a class="btn primary" href="#" onclick="document.querySelector('#gform').scrollIntoView({behavior:'smooth'})">Open Form</a>
+      </div>
+    </aside>
+  </main>
+
+<script>
+  // Small safeguard: if user forgets to replace the iframe src, show a friendly placeholder
+  const iframe = document.getElementById('gform');
+  const src = iframe.getAttribute('src') || '';
+  if (!src || src.startsWith('REPLACE_WITH')) {
+    // show a mini placeholder message inside the iframe area
+    const ph = document.createElement('div');
+    ph.style.padding = '48px';
+    ph.style.textAlign = 'center';
+    ph.style.color = '#ffd7d4';
+    ph.innerHTML = '<strong>Google Form not embedded yet.</strong><div style="opacity:0.8; margin-top:8px; font-size:13px">Replace the iframe <code>src</code> in the HTML with your Google Form embed URL.</div>';
+    iframe.replaceWith(ph);
+  }
+</script>
+
+</body>
+</html>
